@@ -1,0 +1,167 @@
+{% extends 'layout.html' %}
+
+{% block title %}Yi Xie's Home Page{% endblock %}
+
+{% block head %}
+{{ super() }}
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="../static/css/resume.css" rel="stylesheet">
+{% endblock %}
+
+{% block page_content %}
+<div class="page-header"
+     style="background-image:url('../static/assets/background.jpg');
+            background-size: 100% 100%;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            padding: 85px 15px;
+            text-align: center;
+            color: rgba(255,255,255,.5)">
+    <div class="container">
+        <h1>Welcome To Yi Xie's Personal Website</h1>
+        <p class="lead">This website contains the Resume of Yi Xie and several interesting AI application demos.</p>
+    </div>
+</div>
+<br>
+<hr>
+    <div class="container container-cv">
+      <div class="row">
+        <div class="col-xs-12">
+          <div id="photo-header" class="text-center">
+            <!-- PHOTO (AVATAR) -->
+              <div id="text-header">
+              <h1>My name is <span>Yi Xie</span><sup>28 year</sup> and this is my resume/cv</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-7">
+          <!-- ABOUT ME -->
+            <hr>
+          <div class="box">
+            <h2>About Me</h2>
+            <p>I am a Software and Algorithm Engineer of Huawei Technologies Co. I got my Ph.D. degree in 2017 from Zhejiang University. During 2015-2016 academic year, I have been a visiting scholar at McGill University, Canada. My research interests include Computer Vision and Machine Learning. I also have rich experience in designing and developing cloud-based software.</p>
+          </div>
+          <!-- EDUCATION -->
+            <hr>
+          <div class="box">
+            <h2>Education</h2>
+            <ul id="education" class="clearfix">
+              <li>
+                <div class="year pull-left">2008</div>
+                <div class="description pull-right">
+                  <h3>Zhejiang University - Hangzhou, China</h3>
+                  <p>Start undergraduate study. Bachelor in Information & Communication Engineering. Minor in Business Administration. (GPA 3.81 of 4.0)</p>
+                  <p></p>
+                </div>
+              </li>
+              <li>
+                <div class="year pull-left">2012</div>
+                <div class="description pull-right">
+                  <h3>Zhejiang University - Hangzhou, China</h3>
+                  <p>Continue graduate study in Zhejiang University. Ph.D. in Information & Communication Engineering. Research in Computer Vision.</p>
+                </div>
+              </li>
+              <li>
+                <div class="year pull-left">2015</div>
+                <div class="description pull-right">
+                  <h3>McGill University - Montreal, Canada</h3>
+                  <p>Be a Joint Training Ph.D. in Electrical and Computer Engineering. Supervised by Prof. Martin D. Levine (IEEE Fellow).</p>
+                </div>
+              </li>
+              <li>
+                <div class="year pull-left">2017</div>
+                <div class="description pull-right">
+                  <h3>Zhejiang University - Hangzhou, China</h3>
+                  <p>Finally get my Ph.D. in July, 2017. Joined Huawei as an Engineer!</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <!-- EXPERIENCES -->
+            <hr>
+          <div class="box">
+            <h2>Experiences</h2>
+            <div class="job clearfix">
+              <div class="col-xs-3">
+                <div class="where">Huawei</div>
+                <div class="year">2017 - 2018</div>
+              </div>
+              <div class="col-xs-9">
+                <div class="profession">Algorithm engineer / Back-end developer</div>
+                <div class="description">Design cloud-based software in micro-service framework. Also in charge of the back-end development and machine learning algorithm designing for corresponding software.</div>
+              </div>
+            </div>
+            <div class="job clearfix">
+              <div class="col-xs-3">
+                <div class="where">McGill</div>
+                <div class="year">2015-2016</div>
+              </div>
+              <div class="col-xs-9">
+                <div class="profession">Visiting scholar</div>
+                <div class="description">Doing research on Computer Vision and Intelligent Video Surveillance. In particular, human activity recognition, person re-identification and image retrieval.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+          <div class="col-xs-12 col-sm-1">
+          </div>
+        <div class="col-xs-12 col-sm-4">
+          <!-- CONTACT -->
+            <hr>
+            <div id="photo">
+              <img src="../static/assets/yixie.jpg" alt="avatar">
+            </div>
+          <div class="box clearfix">
+            <h2>Contact</h2>
+            <div class="contact-item">
+              <div class="icon pull-left text-center"><span class="fa fa-phone fa-fw"></span></div>
+              <div class="title only pull-right">+86 18688794830</div>
+            </div>
+            <div class="contact-item">
+              <div class="icon pull-left text-center"><span class="fa fa-envelope fa-fw"></span></div>
+              <div class="title only pull-right">yixie@zju.edu.cn</div>
+            </div>
+            <div class="contact-item">
+              <div class="icon pull-left text-center"><span class="fa fa-weixin fa-fw"></span></div>
+              <div class="title only pull-right">xieyi382303</div>
+            </div>
+            <div class="contact-item">
+              <div class="icon pull-left text-center"><span class="fa fa-wordpress fa-fw"></span></div>
+              <div class="title only pull-right">www.51aicloud.top</div>
+            </div>
+          </div>
+          <!-- SKILLS -->
+            <hr>
+          <div class="box">
+            <h2>Skills</h2>
+            <div class="skills">
+              <div class="item-skills" data-percent="1.00">Computer Vision</div>
+              <div class="item-skills" data-percent="0.90">Machine Learning</div>
+              <div class="item-skills" data-percent="0.80">Deep Learning (Tensorflow)</div>
+              <div class="item-skills" data-percent="0.75">Micro-service Framework</div>
+              <div class="item-skills" data-percent="0.25">Python, Java, C++, Matlab</div>
+            </div>
+          </div>
+          <!-- LANGUAGES -->
+            <hr>
+          <div class="box">
+            <h2>Languages</h2>
+            <div id="language-skills">
+              <div class="skill">Chinese<div class="icons pull-right"><div style="width: 80%;" class="icons-red"></div></div></div>
+              <div class="skill">English<div class="icons pull-right"><div style="width: 60%;" class="icons-red"></div></div></div>
+            </div>
+          </div>
+          <!-- HOBBIES -->
+            <br>
+          <div class="box">
+            <h2>Hobbies</h2>
+            <div class="hobby">Basketball</div>
+            <div class="hobby">Reading</div>
+            <div class="hobby">Programming</div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

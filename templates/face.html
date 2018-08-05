@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block title %}Age and Gender Estimation{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1 class="jumbotron-heading">Age and Gender Estimation</h1>
+    <hr>
+    <p class="lead text-muted">Upload your own image, Deep Learning model will do following things:</p>
+    <p class="lead text-muted">1. Detect faces in the image.
+    <p class="lead text-muted">2. Estimage the age and gender for each face.</p>
+</div>
+<hr>
+<br>
+<div class="container">
+    <div class="col-md-7">
+        <div class="form-group">
+            <label font-size="100px"> Please Upload Your Image </label>
+            <form method="post" enctype="multipart/form-data">
+                <div id="upload-block" class="input-group">
+                    <input id="image_name" type="text" class="form-control" readonly>
+                    <span class="input-group-btn">
+                        <span class="btn btn-default btn-file">
+                            ...Browse <input type="file" name="file" id="imgInp">
+                        </span>
+                    </span>
+                    <span class="input-group-btn">
+                        <input type="submit" name="submit" id="sub-btn" class="btn btn-default" value=" Upload ">
+                    </span>
+                </div>
+            </form>
+            <img id="img-upload" src="{{ user_image }}">
+        </div>
+    </div>
+</div>
+<div class="container">
+    <p id="error" color="red">{{ error_msg }}</p>
+</div>
+{% endblock %}

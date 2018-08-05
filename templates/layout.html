@@ -1,0 +1,51 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}Yi Xie's AI Website{% endblock %}
+
+{% block head %}
+{{ super() }}
+<link rel="shortcut icon" href="{{ url_for('static', filename='icon.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename='icon.ico') }}" type="image/x-icon">
+<link href="../static/css/main.css" rel="stylesheet">
+{% endblock %}
+
+{% block navbar %}
+<nav class="navbar navbar-inverse bg-faded rounded navbar-toggleable-md">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Yi Xie</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+              <li><a>|</a></li>
+              <li><a href="/">Resume</a></li>
+              <li><a>|</a></li>
+              <li><a href="/face">Age & Gender Estimation</a></li>
+              <li><a>|</a></li>
+              <li><a href="/face">Person Re-ID</a></li>
+              <li><a>|</a></li>
+              <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+{% endblock %}
+
+<body>
+{% block content %}
+<div class="container">
+    {% block page_content %}{% endblock %}
+</div>
+{% endblock %}
+</body>
+{% block scripts %}
+{{ super() }}}
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/static/js/preview.js"></script>
+{% endblock %}
