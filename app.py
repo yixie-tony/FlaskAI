@@ -28,7 +28,7 @@ bootstrap = Bootstrap(app)
 
 def allowed_file(filename):
     return '.' in filename and \
-        filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+        filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
 @app.route('/uploads/<filename>')
@@ -40,19 +40,38 @@ def uploaded_file(filename):
 def home():
     return render_template('home.html')
 
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
 @app.route('/face', methods=['GET', 'POST'])
 def age_gender():
+
     sample_url = url_for('uploaded_file', filename="sample.jpeg")
+
     if request.method == 'POST':
         if 'file' not in request.files:
             return render_template("face.html", error_msg="No file has been selected!")
         file = request.files['file']
         if file and allowed_file(file.filename):
+
+            with tf.Graph().as_default():
+                sess = tf.Session()
+                with sess.as_default():
+                    pnet, rnet, onet = mtcnn.create_mtcnn(sess, MTCNN_MODEL_PATH)
+
             filename = file.filename
             file_name = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(file_name)
 
             start = time.time()
+
+            # Resize the orginal image to 680-width and save as jpeg
+            cv_ori = cv2.imread(file_name)
+            cv_resize = cv2.resize(cv_ori,
+                                   dsize=(680, int(cv_ori.shape[0] / cv_ori.shape[1] * 680)),
+                                   interpolation=cv2.INTER_CUBIC)
+            cv2.imwrite(file_name, cv_resize)
 
             # Read the image for face detection
             img = misc.imread(file_name)
@@ -79,15 +98,17 @@ def age_gender():
             file_url = url_for('uploaded_file', filename=filename)
             return render_template("face.html", user_image = file_url, error_msg = '')
         else:
-            return render_template("face.html", user_image=sample_url, error_msg='')
+            print('\n Incorrect upload image format.\n')
+            return render_template("face.html", user_image=sample_url, error_msg='Incorrect image format!')
     return render_template("face.html", user_image=sample_url, error_msg='')
+
 
 if __name__ == '__main__':
 
-    with tf.Graph().as_default():
-        sess = tf.Session()
-        with sess.as_default():
-            pnet, rnet, onet = mtcnn.create_mtcnn(sess, MTCNN_MODEL_PATH)
+    # Initialize the Flask Service for Product Environment
+    from werkzeug.contrib.fixers import ProxyFix
+    app.wsgi_app = ProxyFix(app.wsgi_app)
+    app.run()
 
-    # Initialize the Flask Service
-    app.run(debug=False, port=8100)
+    # Initialize the Flask Service for Debug
+    #app.run(debug=False, port=8100)
